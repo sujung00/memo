@@ -45,17 +45,17 @@
 
 			if (!loginId) {
 				alert("아이디를 입력하세요");
-				return;
+				return false;
 			}
 			if (!password) {
 				alert("비밀번호를 입력하세요");
-				return;
+				return false;
 			}
 
 			let url = $("#loginForm").attr("action");
-			console.log(url);
+			//console.log(url);
 			let params = $("#loginForm").serialize();
-			console.log(params);
+			//console.log(params);
 
 			$.post(url, params)
 			.done(function(data) {
