@@ -13,6 +13,7 @@
 					<th>제목</th>
 					<th>작성날짜</th>
 					<th>수정날짜</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,7 +25,10 @@
 						<fmt:formatDate value="${postList.createdAt}" pattern="yyyy-MM-dd"/>
 					</td>
 					<td>
-					<fmt:formatDate value="${postList.updatedAt}" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate value="${postList.updatedAt}" pattern="yyyy-MM-dd"/>
+					</td>
+					<td>
+						<button type="button" class="btn btn-danger">삭제</button>
 					</td>
 				</tr>
 				</c:forEach>
