@@ -22,3 +22,7 @@ footer {
 .sign-up-table th {
 	background-color: #D8D8D8;
 }
+
+a, a:hover {
+	text-decoration: none;
+}

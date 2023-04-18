@@ -17,7 +17,7 @@
 			<%-- 상대 경로 --%>
 			<jsp:include page="../include/header.jsp" />
 		</header>
-		<section class="contents">
+		<section class="contents p-3">
 			<jsp:include page="../${view}.jsp" />
 		</section>
 		<footer>

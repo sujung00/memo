@@ -19,4 +19,8 @@ public interface PostMapper {
 			@Param("imagePath") String imagePath);
 	
 	public List<Post> selectPostByUserId(int userId);
+	
+	public Post selectPostBypostIduserId(
+			@Param("postId") int postId,
+			@Param("userId") int userId);
 }

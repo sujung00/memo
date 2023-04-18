@@ -52,5 +52,22 @@
 		WHERE
 			`userId` = #{userId}
 	</select>
+	
+	<select id="selectPostBypostIduserId" parameterType="map" resultType="com.memo.post.model.Post">
+		SELECT
+			`id`
+			,`userId`
+			,`subject`
+			,`content`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`post`
+		WHERE
+			`id` = #{postId}
+			AND
+			`userId` = #{userId}
+	</select>
 
 </mapper>

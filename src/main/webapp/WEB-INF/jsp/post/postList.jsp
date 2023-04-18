@@ -17,18 +17,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${posts}" var="postList" varStatus="status">
+				<c:forEach items="${posts}" var="post" varStatus="status">
 				<tr>
 					<td>${status.count}</td>
-					<td>${postList.subject}</td>
 					<td>
-						<fmt:formatDate value="${postList.createdAt}" pattern="yyyy-MM-dd"/>
+						<a href="/post/post_detail_view?postId=${post.id}">${post.subject}</a>
 					</td>
 					<td>
-						<fmt:formatDate value="${postList.updatedAt}" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate value="${post.createdAt}" pattern="yyyy-MM-dd"/>
 					</td>
 					<td>
-						<button type="button" class="btn btn-danger">삭제</button>
+						<fmt:formatDate value="${post.updatedAt}" pattern="yyyy-MM-dd"/>
+					</td>
+					<td>
+						<button type="button" class="btn btn-danger del-btn" data-post-id="${post.id}">삭제</button>
 					</td>
 				</tr>
 				</c:forEach>
