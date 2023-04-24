@@ -13,7 +13,6 @@
 					<th>제목</th>
 					<th>작성날짜</th>
 					<th>수정날짜</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,9 +27,6 @@
 					</td>
 					<td>
 						<fmt:formatDate value="${post.updatedAt}" pattern="yyyy-MM-dd"/>
-					</td>
-					<td>
-						<button type="button" class="btn btn-danger del-btn" data-post-id="${post.id}">삭제</button>
 					</td>
 				</tr>
 				</c:forEach>
