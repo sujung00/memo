@@ -72,4 +72,20 @@ public class PostBO {
 	public Post getPostBypostIduserId(int postId, int userId) {
 		return postMapper.selectPostBypostIduserId(postId, userId);
 	}
+	
+	public int deletePostByPostIdUserId(int postId, int userId) {
+		// 이미지 확인을 위해 기존글을 가져온다.
+		Post post = getPostBypostIduserId(postId, userId);
+		if (post == null) {
+			logger.error("[delete post] post is null. postId:{}, userId:{}", postId, userId);
+			return 0;
+		}
+		
+		// 기존 이미지가 있으면 삭제
+		if(post.getImagePath() != null) {
+			fileManager.deleteFile(post.getImagePath());
+		}
+		
+		return postMapper.deletePostByPostIdUserId(postId, userId);
+	}
 }

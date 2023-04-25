@@ -19,7 +19,7 @@
 		</div>
 		
 		<div class="d-flex justify-content-between">
-			<button type="button" id="postDeleteBtn" class="btn btn-secondary">삭제</button>
+			<button type="button" id="postDeleteBtn" class="btn btn-secondary" data-post-id="${post.id}">삭제</button>
 			<div>
 				<a href="/post/post_list_view" class="btn btn-dark">목록으로</a>
 				<button type="button" id="saveBtn" class="btn btn-warning" data-post-id="${post.id}">수정</button>
@@ -92,6 +92,29 @@ $(document).ready(function(){
 				alert("메모 수정 시 실패했습니다");
 			}
 		})
+	});
+	
+	// 삭제 버튼
+	$("#postDeleteBtn").on("click", function(){
+		let postId = $(this).data('post-id');
+		
+		$.ajax({
+			type:"DELETE"
+			, url:"/post/delete"
+			, data:{"postId":postId}
+		
+			, success:function(data){
+				if(data.code == 1){
+					alert("삭제 되었습니다");
+					location.href = "/post/post_list_view";
+				} else {
+					alert(data.errorMessage);
+				}
+			}
+			, error:function(request, status, error){
+				alert("메모를 삭제하는데 실패했습니다");
+			}
+		});
 	});
 });
 </script>
