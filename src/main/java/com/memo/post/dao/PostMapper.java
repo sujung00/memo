@@ -18,7 +18,11 @@ public interface PostMapper {
 			@Param("content") String content,
 			@Param("imagePath") String imagePath);
 	
-	public List<Post> selectPostByUserId(int userId);
+	public List<Post> selectPostByUserId(
+			@Param("userId") int userId,
+			@Param("direction") String direction,
+			@Param("standardId") Integer standardId,
+			@Param("limit") int limit);
 	
 	public Post selectPostBypostIduserId(
 			@Param("postId") int postId,
@@ -33,5 +37,9 @@ public interface PostMapper {
 	public int deletePostByPostIdUserId(
 			@Param("postId") int postId,
 			@Param("userId") int userId);
+	
+	public int selectPostIdByUserIdSort(
+			@Param("userId") int userId,
+			@Param("sort") String sort);
 	
 }

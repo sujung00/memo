@@ -38,7 +38,7 @@
 		)
 	</insert>
 	
-	<select id="selectPostByUserId" parameterType="int" resultType="com.memo.post.model.Post">
+	<select id="selectPostByUserId" parameterType="map" resultType="com.memo.post.model.Post">
 		SELECT
 			`id`
 			,`userId`
@@ -51,6 +51,21 @@
 			`post`
 		WHERE
 			`userId` = #{userId}
+		<if test="direction == null">
+		ORDER BY `id` DESC 
+		</if>
+		<if test="direction == 'next'">
+		<![CDATA[
+			AND `id` < #{standardId}
+		]]>
+		ORDER BY `id` DESC 
+		</if>
+		<if test="direction == 'prev'">
+		<![CDATA[
+			AND `id` > #{standardId}
+		]]>
+		</if>
+		LIMIT ${limit}
 	</select>
 	
 	<select id="selectPostBypostIduserId" parameterType="map" resultType="com.memo.post.model.Post">
@@ -93,5 +108,16 @@
 			AND
 			`userId` = #{userId}
 	</delete>
+	
+	<select id="selectPostIdByUserIdSort" parameterType="map" resultType="int">
+		SELECT
+			`id`
+		FROM
+			`post`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY `id` ${sort}
+		LIMIT 1
+	</select>
 
 </mapper>
